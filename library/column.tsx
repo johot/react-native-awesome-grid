@@ -9,11 +9,11 @@ export interface ColumnProps {
 }
 
 export default class Column extends Component<ColumnProps> {
+  static defaultProps = {
+    width: "1*"
+  };
+
   render() {
     return <ColumnRow type="column" {...this.props} />;
   }
 }
-
-Column.defaultProps = {
-  width: "1*"
-};

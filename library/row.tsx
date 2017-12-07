@@ -10,11 +10,11 @@ export interface RowProps {
 }
 
 export default class Row extends Component<RowProps> {
+  static defaultProps = {
+    height: "1*"
+  };
+
   render() {
     return <ColumnRow type="row" {...this.props} />;
   }
 }
-
-Row.defaultProps = {
-  height: "1*"
-};
