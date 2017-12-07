@@ -1,6 +1,6 @@
 {
   "name": "react-native-awesome-grid",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An awesome React Native grid powered by flexbox. Building layouts have never been easier!",
   "main": "index.js",
   "scripts": {

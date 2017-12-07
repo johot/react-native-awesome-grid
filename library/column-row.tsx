@@ -3,7 +3,7 @@ import { View } from "react-native";
 import Column from "./column";
 import Row from "./row";
 
-interface ColumnRowProps {
+export interface ColumnRowProps {
   type: string;
   style?: any;
   width?: string;
