@@ -1,5 +1,6 @@
-import CherryLabel from "./cherry-label";
-import LimeLabel from "./lime-label";
+import Grid from "./grid";
+import Row from "./row";
+import Column from "./column";
 
-export { CherryLabel, LimeLabel };
-export default LimeLabel;
+export default Grid;
+export { Grid, Row, Column };
