@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import ColumnRow from "./column-row";
+import ColumnRow, { VerticalContentAlignment, HorizontalContentAlignment } from "./column-row";
 
 export interface ColumnProps {
   style?: any;
-  width?: string;
-  verticalContentAlignment?: string;
-  horizontalContentAlignment?: string;
+  width?: string | number;
+  verticalContentAlignment?: VerticalContentAlignment;
+  horizontalContentAlignment?: HorizontalContentAlignment;
 }
 
 export default class Column extends Component<ColumnProps> {
@@ -14,6 +14,14 @@ export default class Column extends Component<ColumnProps> {
   };
 
   render() {
-    return <ColumnRow type="column" {...this.props} />;
+    return (
+      <ColumnRow
+        type="column"
+        style={this.props.style}
+        width={this.props.width}
+        verticalContentAlignment={this.props.verticalContentAlignment}
+        horizontalContentAlignment={this.props.horizontalContentAlignment}
+      />
+    );
   }
 }

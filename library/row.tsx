@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { View } from "react-native";
-import ColumnRow from "./column-row";
+import ColumnRow, { VerticalContentAlignment, HorizontalContentAlignment } from "./column-row";
 
 export interface RowProps {
   style?: any;
-  height?: string;
-  verticalContentAlignment?: string;
-  horizontalContentAlignment?: string;
+  height?: string | number;
+  verticalContentAlignment?: VerticalContentAlignment;
+  horizontalContentAlignment?: HorizontalContentAlignment;
 }
 
 export default class Row extends Component<RowProps> {
@@ -15,6 +15,14 @@ export default class Row extends Component<RowProps> {
   };
 
   render() {
-    return <ColumnRow type="row" {...this.props} />;
+    return (
+      <ColumnRow
+        type="row"
+        style={this.props.style}
+        height={this.props.height}
+        verticalContentAlignment={this.props.verticalContentAlignment}
+        horizontalContentAlignment={this.props.horizontalContentAlignment}
+      />
+    );
   }
 }

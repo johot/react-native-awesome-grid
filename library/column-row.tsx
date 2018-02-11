@@ -3,17 +3,21 @@ import { View } from "react-native";
 import Column from "./column";
 import Row from "./row";
 
+export type VerticalContentAlignment = "center" | "top" | "bottom" | "flex-start" | "flex-end" | "space-around" | "space-between";
+export type HorizontalContentAlignment = "center" | "left" | "right" | "flex-start" | "flex-end" | "space-around" | "space-between";
+export type ColumnRowType = "row" | "column";
+
 export interface ColumnRowProps {
-  type: string;
+  type: ColumnRowType;
   style?: any;
-  width?: string;
-  height?: string;
-  verticalContentAlignment?: string;
-  horizontalContentAlignment?: string;
+  width?: string | number;
+  height?: string | number;
+  verticalContentAlignment?: VerticalContentAlignment;
+  horizontalContentAlignment?: HorizontalContentAlignment;
 }
 
 export default class ColumnRow extends Component<ColumnRowProps> {
-  generateContentAlignmentStyle(): any {
+  private generateContentAlignmentStyle(): any {
     let generatedStyle = {};
 
     if (this.props.verticalContentAlignment) {
@@ -67,8 +71,8 @@ export default class ColumnRow extends Component<ColumnRowProps> {
     return generatedStyle;
   }
 
-  generateRowColumnSizeStyle(widthOrHeight: string) {
-    let number = parseInt(widthOrHeight, 10);
+  private generateRowColumnSizeStyle(widthOrHeight: string | number) {
+    let number = parseInt(widthOrHeight.toString(), 10);
     let itemStyle;
 
     // If the value is "*" we treat it as "1*"
@@ -76,7 +80,7 @@ export default class ColumnRow extends Component<ColumnRowProps> {
       number = 1;
     }
 
-    if (widthOrHeight.endsWith("*")) {
+    if (widthOrHeight.toString().endsWith("*")) {
       // Star (%)
       itemStyle = {
         flexGrow: number,
@@ -100,8 +104,7 @@ export default class ColumnRow extends Component<ColumnRowProps> {
     return itemStyle;
   }
 
-  generateStyle(): any {
-    let generatedStyle;
+  private generateStyle(): any {
     let direction = this.props.type;
 
     React.Children.forEach(this.props.children, component => {
@@ -113,9 +116,8 @@ export default class ColumnRow extends Component<ColumnRowProps> {
     });
 
     // Default values
-    generatedStyle = {
-      //flex: 1,
-      //display: 'flex',
+    let generatedStyle = {
+      display: "flex",
       flexDirection: direction,
       ...this.props.style
     };
@@ -151,26 +153,6 @@ export default class ColumnRow extends Component<ColumnRowProps> {
     const generatedStyle = this.generateStyle();
 
     return <View style={generatedStyle}>{this.props.children}</View>;
-
-    // // Wrap in Align block?
-    // if (this.props.horizontalContentAlignment || this.props.verticalContentAlignment) {
-    //   // Experiment! Modify child props directly!
-    //   // var childrenWithProps = React.Children.map(this.props.children, child =>
-    //   //     React.cloneElement(child, { style: [child.props.style, { alignSelf: 'stretch' }] }));
-    //   // return <View style={this.itemStyle}>
-    //   // {/* {childrenWithProps} */}
-    //   // </View>
-
-    //   return (
-    //     <View style={[this.itemStyle, this.props.style]}>
-    //       <Align horizontalAlignment={this.props.horizontalContentAlignment || "left"} verticalAlignment={this.props.verticalContentAlignment || "top"}>
-    //         {this.props.children}
-    //       </Align>
-    //     </View>
-    //   );
-    // } else {
-    //   return <View style={this.itemStyle}>{this.props.children}</View>;
-    // }
   }
 }
 
