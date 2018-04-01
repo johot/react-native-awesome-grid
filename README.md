@@ -1,6 +1,6 @@
 # React Native Awesome Grid 👌
 
-_Awesome grid-layout components for React, based on flexbox. Making layouts in React Native have never been easier._
+_Awesome grid-layout components for React Native, based on flexbox. Making layouts in React Native have never been easier._
 
 ## Installation
 
