@@ -1,13 +1,17 @@
 {
   "name": "react-native-awesome-grid",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description":
     "Awesome grid-layout components for React Native, based on flexbox. Making layouts in React Native have never been easier.",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:johot/react-native-awesome-grid.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Johan Otterud <johan.otterud@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
     "react": "*"
