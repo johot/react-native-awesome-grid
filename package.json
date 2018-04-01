@@ -1,6 +1,6 @@
 {
   "name": "react-native-awesome-grid",
-  "version": "0.1.0",
+  "version": "0.5.0",
   "private": true,
   "devDependencies": {
     "react-native-scripts-ts": "1.7.0",
@@ -20,7 +20,8 @@
     "android": "react-native-scripts-ts android",
     "ios": "react-native-scripts-ts ios",
     "test": "node node_modules/jest/bin/jest.js --watch",
-    "build-library": "cd library &&  tsc && cp package.json ../build/dist/ && Echo Build completed!",
+    "build-library":
+      "rm -rf build && cd library && tsc && cp package.json ../build/dist/ && cp ../readme.md ../build/dist/ && Echo Build completed!",
     "publish-library": "cd build/dist && npm publish && echo Package published!"
   },
   "jest": {
